@@ -11,3 +11,6 @@ class IFrame:
 
     def handle_error(self, error):
         pass
+
+    def load_button_clicked(self):
+        pass

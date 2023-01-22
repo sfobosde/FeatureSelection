@@ -9,7 +9,7 @@ class MainFrame(IFrame):
         self.window = Tk()
         self.window.geometry(size)
         self.window.title(title)
-        self.__designer = MainFrameDesigner(self.window)
+        self.__designer = MainFrameDesigner(self)
 
     def show(self):
         if (self.window):
@@ -17,7 +17,7 @@ class MainFrame(IFrame):
         else:
             raise Exception("Window not initialized")
 
-    def handle_error(self, error:Exception):
+    def handle_error(self, error: Exception):
         error_frame = Tk()
 
         error_label = LabelFrame(error_frame, text="Возникла ошибка при выполнении действия.")
@@ -27,3 +27,7 @@ class MainFrame(IFrame):
         error_text.pack()
 
         error_label.mainloop()
+
+    def load_button_clicked(self):
+        print("handle")
+        pass
