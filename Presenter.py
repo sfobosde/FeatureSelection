@@ -1,14 +1,17 @@
-from Entities.IEntityManager import IEntityManager
-from UserForms.IFrame import IFrame
+from Entities.IFeatureSelectionCore import IFeatureSelectionCore
+from UserForms.MainFrame.IMainFrame import IMainFrame
 
 
 class Presenter:
-    mainFrame: IFrame
-    entityManager: IEntityManager
+    mainFrame: IMainFrame
+    featureSelectionCore: IFeatureSelectionCore
 
-    def __init__(self, IMainFrame, IEntityManager):
-        self.mainFrame = IMainFrame
-        self.entityManager = IEntityManager
+    def __init__(self, main_frame, feature_selection_core):
+        self.mainFrame = main_frame
+        self.featureSelectionCore = feature_selection_core
+
+        self.mainFrame.add_dataset_file.add_handler(self.featureSelectionCore.receive_dataset_file)
+
         try:
             self.mainFrame.show()
         except Exception as e:
