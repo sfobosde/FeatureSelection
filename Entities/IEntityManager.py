@@ -1,0 +1,2 @@
+class IEntityManager():
+    pass
