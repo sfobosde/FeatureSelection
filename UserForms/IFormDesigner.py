@@ -8,13 +8,21 @@ class IFormDesigner:
     frame: IFrame = None
     window: Tk = None
 
-    def add_label(self, label_text="", column=0, row=0, font=("Arial", 14)):
+    def add_label(self, label_text="", padx=0, pady=0, side=LEFT, anchor="nw", font=("Arial", 14)):
         label = Label(self.window, text=label_text, font=font)
-        label.grid(column=column, row=row)
+        label.pack(
+            anchor=anchor,
+            padx=padx,
+            pady=pady,
+            side=side,)
 
-    def add_button_text(self, click_handler, text='Click Me!', column=0, row=0):
+    def add_button_text(self, click_handler, text='Click Me!', padx=0, pady=0, side=LEFT, anchor='nw'):
         button = Button(self.window, text=text, command=click_handler)
-        button.grid(column=column, row=row)
+        button.pack(
+            anchor=anchor,
+            padx=padx,
+            pady=pady,
+            side=side)
 
     def initialize_form(self):
         pass
