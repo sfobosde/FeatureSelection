@@ -1,14 +1,15 @@
 from tkinter import *
-from UserForms.IMainFrame import IMainFrame
+from UserForms.IFrame import IFrame
+from UserForms.MainFrame.MainFrameDesigner import MainFrameDesigner
 
 
 # Realise mainFrame interface.
-class MainFrame(IMainFrame):
-
+class MainFrame(IFrame):
     def __init__(self, title="Unnamed Form", size='800x600'):
         self.window = Tk()
         self.window.geometry(size)
         self.window.title(title)
+        self.__designer = MainFrameDesigner(self.window)
 
     def show(self):
         if (self.window):

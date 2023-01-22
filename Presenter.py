@@ -1,9 +1,9 @@
 from Entities.IEntityManager import IEntityManager
-from UserForms.IMainFrame import IMainFrame
+from UserForms.IFrame import IFrame
 
 
 class Presenter:
-    mainFrame: IMainFrame
+    mainFrame: IFrame
     entityManager: IEntityManager
 
     def __init__(self, IMainFrame, IEntityManager):

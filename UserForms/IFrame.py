@@ -2,7 +2,8 @@
 from tkinter import Tk
 
 
-class IMainFrame:
+class IFrame:
+    # Window type object.
     window: Tk = None
 
     def show(self):
