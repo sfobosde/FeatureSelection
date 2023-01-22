@@ -3,9 +3,8 @@ from tkinter import *
 from pandas import DataFrame
 
 from Entities.column import Column
-from UserForms.IFormDesigner import IFormDesigner
+from UserForms.MainFrame.IFormDesigner import IFormDesigner
 from UserForms.IFrame import IFrame
-from UserForms.MainFrame.IMainFrame import IMainFrame
 
 
 class MainFrameDesigner(IFormDesigner):
@@ -90,7 +89,7 @@ class MainFrameDesigner(IFormDesigner):
         return button
 
     def visualise_dataframe(self, dataframe: DataFrame):
-        dataset_frame = self.create_frame()
+        self.dataset_frame = self.create_frame()
 
         n_cols = dataframe.shape[1]
 
@@ -99,7 +98,7 @@ class MainFrameDesigner(IFormDesigner):
         i = 0
         for j, col in enumerate(column_names):
             column = Column(col)
-            button = Button(dataset_frame,
+            button = Button(self.dataset_frame,
                             command=column.drop_button_clicked,
                             text="Using")
             button.grid(row=i, column=j)
@@ -108,14 +107,14 @@ class MainFrameDesigner(IFormDesigner):
             column.add_to_droplist.add_handler(self.frame.add_to_droplist)
             column.remove_from_droplist.add_handler(self.frame.remove_from_droplist)
 
-            text = Text(dataset_frame, width=7, height=1, bg="#9BC2E6")
+            text = Text(self.dataset_frame, width=7, height=1, bg="#9BC2E6")
             text.grid(row=i + 1, column=j)
             text.insert(INSERT, col)
 
         # adding 5 the other rows into the grid.
         for i in range(5):
             for j in range(n_cols):
-                text = Text(dataset_frame, width=7, height=1)
+                text = Text(self.dataset_frame, width=7, height=1)
                 text.grid(row=i + 2, column=j)
                 text.insert(INSERT, dataframe.loc[i][j])
 

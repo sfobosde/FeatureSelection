@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="add dataframe visualise">
-      <change afterPath="$PROJECT_DIR$/Entities/column.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/IFormDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/IFormDesigner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" afterDir="false" />
-    </list>
+    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="add/remove from drop list added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674424755425</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add/remove from drop list added">
+      <created>1674429440288</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674429440288</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +174,7 @@
     <MESSAGE value="refactor framedesigner" />
     <MESSAGE value="add creating labels in designer" />
     <MESSAGE value="add dataframe visualise" />
-    <option name="LAST_COMMIT_MESSAGE" value="add dataframe visualise" />
+    <MESSAGE value="add/remove from drop list added" />
+    <option name="LAST_COMMIT_MESSAGE" value="add/remove from drop list added" />
   </component>
 </project>
