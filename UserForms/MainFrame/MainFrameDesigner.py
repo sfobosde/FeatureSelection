@@ -10,17 +10,59 @@ class MainFrameDesigner(IFormDesigner):
         self.initialize_form()
 
     def initialize_form(self):
-        self.add_label("Загрузите выборку:",
-                       anchor='nw',
-                       padx=[20, 5],
-                       pady=15,
-                       side=LEFT,
-                       font=("Arial", 11))
+        loading_frame = self.create_frame(anchor=NW,
+                                          border_width=0,
+                                          relief=SOLID,
+                                          padx=20,
+                                          pady=20)
+
+        self.add_label(loading_frame,
+                       label_text="Загрузите файл:")
 
         self.add_button_text(click_handler=self.frame.load_button_clicked,
-                             anchor='nw',
+                             frame=loading_frame,
                              text="Загрузить",
                              padx=5,
                              pady=15,
                              side=LEFT)
 
+    def create_frame(self,
+                     anchor=NW,
+                     border_width=0,
+                     relief=SOLID,
+                     padx=0,
+                     pady=0):
+        frame = Frame(self.window,
+                      borderwidth=border_width,
+                      relief=relief,
+                      padx=padx,
+                      pady=pady)
+        frame.pack(anchor=anchor)
+
+        return frame
+
+    def add_label(self,
+                  frame,
+                  label_text="",
+                  padx=0,
+                  pady=0,
+                  side=LEFT,
+                  font=("Arial", 14)):
+        label = Label(frame, text=label_text, font=font)
+        label.pack(
+            padx=padx,
+            pady=pady,
+            side=side,)
+
+    def add_button_text(self,
+                        frame,
+                        click_handler,
+                        text='Click Me!',
+                        padx=0,
+                        pady=0,
+                        side=LEFT):
+        button = Button(frame, text=text, command=click_handler)
+        button.pack(
+            padx=padx,
+            pady=pady,
+            side=side)
