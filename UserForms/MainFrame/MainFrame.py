@@ -38,6 +38,7 @@ class MainFrame(IMainFrame):
 
     # Handle load dataset button click.
     def load_button_clicked(self):
+        # filetypes=(("CSV Files", "*.csv"),)
         file = askopenfile(filetypes=(("CSV Files", "*.csv"),))
         if (file):
             try:
@@ -45,4 +46,5 @@ class MainFrame(IMainFrame):
             except Exception as e:
                 self.handle_error(e)
 
-
+    def receive_dataset(self, dataset):
+        self.__designer.visualise_dataframe(dataset)

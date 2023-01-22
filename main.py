@@ -3,7 +3,7 @@ from Presenter import Presenter
 from UserForms.MainFrame.MainFrame import MainFrame
 
 # Create frame object.
-main_frame = MainFrame("Feature Selection", '800x600')
+main_frame = MainFrame("Feature Selection", '1280x720')
 
 # Create entity manager  object.
 feature_selection_core = FeatureSelectionCore()

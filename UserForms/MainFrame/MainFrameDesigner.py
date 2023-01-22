@@ -1,4 +1,7 @@
 from tkinter import *
+
+from pandas import DataFrame
+
 from UserForms.IFormDesigner import IFormDesigner
 from UserForms.IFrame import IFrame
 
@@ -10,14 +13,17 @@ class MainFrameDesigner(IFormDesigner):
         self.initialize_form()
 
     def initialize_form(self):
+        self.window.scroll_x = Scrollbar(self.window, orient=HORIZONTAL)
+        self.window.scroll_y = Scrollbar(self.window, orient=VERTICAL)
+
         body_frame = self.create_frame(anchor=NW,
-                                       border_width=1,
+                                       border_width=0,
                                        relief=SOLID,
                                        padx=20,
                                        pady=20)
         body_frame.pack(fill=BOTH)
 
-        loading_frame = self.create_frame(frame=body_frame,
+        loading_frame = self.create_frame(root_frame=body_frame,
                                           anchor=NW,
                                           border_width=0,
                                           relief=SOLID,
@@ -35,16 +41,16 @@ class MainFrameDesigner(IFormDesigner):
                              side=LEFT)
 
     def create_frame(self,
-                     frame=None,
+                     root_frame=None,
                      anchor=NW,
                      border_width=0,
                      relief=SOLID,
                      padx=0,
                      pady=0):
-        if not frame:
-            frame = self.window
+        if not root_frame:
+            root_frame = self.window
 
-        frame = Frame(frame,
+        frame = Frame(root_frame,
                       borderwidth=border_width,
                       relief=relief,
                       padx=padx,
@@ -78,3 +84,25 @@ class MainFrameDesigner(IFormDesigner):
             padx=padx,
             pady=pady,
             side=side)
+
+    def visualise_dataframe(self, dataframe: DataFrame):
+        dataset_frame = self.create_frame()
+
+        n_cols = dataframe.shape[1]
+
+        column_names = dataframe.columns
+
+        i = 0
+        for j, col in enumerate(column_names):
+            text = Text(dataset_frame, width=7, height=1, bg="#9BC2E6")
+            text.grid(row=i, column=j)
+            text.insert(INSERT, col)
+
+        # adding 5 the other rows into the grid.
+        for i in range(5):
+            for j in range(n_cols):
+                text = Text(dataset_frame, width=7, height=1)
+                text.grid(row=i + 1, column=j)
+                text.insert(INSERT, dataframe.loc[i][j])
+
+
