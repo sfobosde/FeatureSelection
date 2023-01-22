@@ -2,10 +2,11 @@ from tkinter import *
 from tkinter.ttk import Label
 
 from UserForms.IFrame import IFrame
+from UserForms.MainFrame.IMainFrame import IMainFrame
 
 
 class IFormDesigner:
-    frame: IFrame = None
+    frame: IMainFrame = None
     window: Tk = None
 
     def add_label(self, frame, label_text="", padx=0, pady=0, side=LEFT, font=("Arial", 14)):

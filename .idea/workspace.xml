@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="add creating labels in designer">
+    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="add dataframe visualise">
+      <change afterPath="$PROJECT_DIR$/Entities/column.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Presenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserForms/IFormDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/IFormDesigner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674421444670</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add dataframe visualise">
+      <created>1674424755425</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674424755425</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,6 +173,7 @@
     <MESSAGE value="prepare to add unittest" />
     <MESSAGE value="refactor framedesigner" />
     <MESSAGE value="add creating labels in designer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add creating labels in designer" />
+    <MESSAGE value="add dataframe visualise" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dataframe visualise" />
   </component>
 </project>

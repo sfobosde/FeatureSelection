@@ -16,6 +16,7 @@ class MainFrame(IMainFrame):
         self.window.title(title)
         self.__designer = MainFrameDesigner(self)
         self.add_dataset_file = UserEvent()
+        self.drop_columns_list = []
 
     # Show generated form,
     def show(self):
@@ -48,3 +49,13 @@ class MainFrame(IMainFrame):
 
     def receive_dataset(self, dataset):
         self.__designer.visualise_dataframe(dataset)
+
+    def add_to_droplist(self, column_name):
+        print("add to drop list (mainFrame)")
+        self.drop_columns_list.append(column_name)
+        print(self.drop_columns_list)
+
+    def remove_from_droplist(self, column_name):
+        print("remove from drop list (mainFrame)")
+        self.drop_columns_list.remove(column_name)
+        print(self.drop_columns_list)
