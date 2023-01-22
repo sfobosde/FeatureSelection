@@ -1,6 +1,6 @@
 from Event import UserEvent
 
-
+# The column object to realise event inteface.
 class Column:
     is_using: bool
     button = None
@@ -13,6 +13,7 @@ class Column:
         self.add_to_droplist = UserEvent()
         self.remove_from_droplist = UserEvent()
 
+    # Handle button click.
     def drop_button_clicked(self):
         print("Column handler")
         if self.is_using:

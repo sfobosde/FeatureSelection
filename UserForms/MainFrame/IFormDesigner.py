@@ -5,10 +5,13 @@ from UserForms.IFrame import IFrame
 from UserForms.MainFrame.IMainFrame import IMainFrame
 
 
+# Interface of main form designer.
 class IFormDesigner:
     frame: IMainFrame = None
+    dataset_frame: Frame = None
     window: Tk = None
 
+    # Methods.
     def add_label(self, frame, label_text="", padx=0, pady=0, side=LEFT, font=("Arial", 14)):
         pass
 

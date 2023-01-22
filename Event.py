@@ -1,15 +1,15 @@
 class UserEvent:
     def __init__(self):
-        self.__eventhandlersample = []
+        self.__eventhandler_sample = []
 
     def add_handler(self, handler):
-        self.__eventhandlersample.append(handler)
+        self.__eventhandler_sample.append(handler)
         return self
 
     def remove_handler(self, handler):
-        self.__eventhandlersample.remove(handler)
+        self.__eventhandler_sample.remove(handler)
         return self
 
     def __call__(self, *args, **kwargs):
-        for eventhandlersample in self.__eventhandlersample:
-            eventhandlersample(*args, **kwargs)
+        for eventhandler_sample in self.__eventhandler_sample:
+            eventhandler_sample(*args, **kwargs)

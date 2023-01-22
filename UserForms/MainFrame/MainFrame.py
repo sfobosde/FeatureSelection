@@ -2,13 +2,13 @@ from tkinter import *
 from tkinter.filedialog import askopenfile
 
 from Event import UserEvent
-from UserForms.IFrame import IFrame
 from UserForms.MainFrame.IMainFrame import IMainFrame
 from UserForms.MainFrame.MainFrameDesigner import MainFrameDesigner
 
 
 # Realise mainFrame interface.
 class MainFrame(IMainFrame):
+
     # Initialize form and generate interface with frame designer.
     def __init__(self, title="Unnamed Form", size='800x600'):
         self.window = Tk()
@@ -18,9 +18,9 @@ class MainFrame(IMainFrame):
         self.add_dataset_file = UserEvent()
         self.drop_columns_list = []
 
-    # Show generated form,
+    # Show generated form.
     def show(self):
-        if (self.window):
+        if self.window:
             self.window.mainloop()
         else:
             raise Exception("Window not initialized")
@@ -30,9 +30,9 @@ class MainFrame(IMainFrame):
         error_frame = Tk()
 
         error_label = LabelFrame(error_frame, text="Возникла ошибка при выполнении действия.")
-        error_label.pack(fill="both", expand="yes")
+        error_label.pack(fill="both")
 
-        error_text = Label(error_label, text=error)
+        error_text = Label(error_label)
         error_text.pack()
 
         error_label.mainloop()
@@ -41,20 +41,24 @@ class MainFrame(IMainFrame):
     def load_button_clicked(self):
         # filetypes=(("CSV Files", "*.csv"),)
         file = askopenfile(filetypes=(("CSV Files", "*.csv"),))
-        if (file):
+        if file:
             try:
                 self.add_dataset_file(file)
             except Exception as e:
                 self.handle_error(e)
 
+    # Catch read by core dataset.
     def receive_dataset(self, dataset):
+        # Call designer method to visualise dataset.
         self.__designer.visualise_dataframe(dataset)
 
+    # Add column to exclude list.
     def add_to_droplist(self, column_name):
         print("add to drop list (mainFrame)")
         self.drop_columns_list.append(column_name)
         print(self.drop_columns_list)
 
+    # Remove column from exclude list.
     def remove_from_droplist(self, column_name):
         print("remove from drop list (mainFrame)")
         self.drop_columns_list.remove(column_name)

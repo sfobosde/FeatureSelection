@@ -4,19 +4,16 @@ from pandas import DataFrame
 
 from Entities.column import Column
 from UserForms.MainFrame.IFormDesigner import IFormDesigner
-from UserForms.IFrame import IFrame
+from UserForms.MainFrame.IMainFrame import IMainFrame
 
 
 class MainFrameDesigner(IFormDesigner):
-    def __init__(self, frame: IFrame):
+    def __init__(self, frame: IMainFrame):
         self.window = frame.window
         self.frame = frame
         self.initialize_form()
 
     def initialize_form(self):
-        self.window.scroll_x = Scrollbar(self.window, orient=HORIZONTAL)
-        self.window.scroll_y = Scrollbar(self.window, orient=VERTICAL)
-
         body_frame = self.create_frame(anchor=NW,
                                        border_width=0,
                                        relief=SOLID,
@@ -32,15 +29,16 @@ class MainFrameDesigner(IFormDesigner):
                                           pady=20)
 
         self.add_label(loading_frame,
-                       label_text="Загрузите файл:")
+                       label_text="Load file:")
 
         self.add_button_text(click_handler=self.frame.load_button_clicked,
                              frame=loading_frame,
-                             text="Загрузить",
+                             text="Import",
                              padx=5,
                              pady=15,
                              side=LEFT)
 
+    # Creating frame on root frame.
     def create_frame(self,
                      root_frame=None,
                      anchor=NW,
@@ -48,6 +46,7 @@ class MainFrameDesigner(IFormDesigner):
                      relief=SOLID,
                      padx=0,
                      pady=0):
+
         if not root_frame:
             root_frame = self.window
 
@@ -117,4 +116,3 @@ class MainFrameDesigner(IFormDesigner):
                 text = Text(self.dataset_frame, width=7, height=1)
                 text.grid(row=i + 2, column=j)
                 text.insert(INSERT, dataframe.loc[i][j])
-
