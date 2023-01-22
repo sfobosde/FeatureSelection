@@ -10,7 +10,15 @@ class MainFrameDesigner(IFormDesigner):
         self.initialize_form()
 
     def initialize_form(self):
-        loading_frame = self.create_frame(anchor=NW,
+        body_frame = self.create_frame(anchor=NW,
+                                       border_width=1,
+                                       relief=SOLID,
+                                       padx=20,
+                                       pady=20)
+        body_frame.pack(fill=BOTH)
+
+        loading_frame = self.create_frame(frame=body_frame,
+                                          anchor=NW,
                                           border_width=0,
                                           relief=SOLID,
                                           padx=20,
@@ -27,12 +35,16 @@ class MainFrameDesigner(IFormDesigner):
                              side=LEFT)
 
     def create_frame(self,
+                     frame=None,
                      anchor=NW,
                      border_width=0,
                      relief=SOLID,
                      padx=0,
                      pady=0):
-        frame = Frame(self.window,
+        if not frame:
+            frame = self.window
+
+        frame = Frame(frame,
                       borderwidth=border_width,
                       relief=relief,
                       padx=padx,
