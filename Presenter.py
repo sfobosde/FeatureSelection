@@ -11,6 +11,7 @@ class Presenter:
         self.featureSelectionCore = feature_selection_core
 
         self.mainFrame.add_dataset_file.add_handler(self.featureSelectionCore.receive_dataset_file)
+        self.featureSelectionCore.show_dataframe.add_handler(self.mainFrame.receive_dataset)
 
         try:
             self.mainFrame.show()
