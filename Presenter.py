@@ -10,6 +10,7 @@ class Presenter:
         self.mainFrame = main_frame
         self.featureSelectionCore = feature_selection_core
 
+        # Connect events -> handlers.
         self.mainFrame.add_dataset_file.add_handler(self.featureSelectionCore.receive_dataset_file)
         self.featureSelectionCore.show_dataframe.add_handler(self.mainFrame.receive_dataset)
 

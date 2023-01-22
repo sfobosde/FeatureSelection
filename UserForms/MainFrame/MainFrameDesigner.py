@@ -2,20 +2,18 @@ from tkinter import *
 
 from pandas import DataFrame
 
-from UserForms.IFormDesigner import IFormDesigner
-from UserForms.IFrame import IFrame
+from Entities.column import Column
+from UserForms.MainFrame.IFormDesigner import IFormDesigner
+from UserForms.MainFrame.IMainFrame import IMainFrame
 
 
 class MainFrameDesigner(IFormDesigner):
-    def __init__(self, frame: IFrame):
+    def __init__(self, frame: IMainFrame):
         self.window = frame.window
         self.frame = frame
         self.initialize_form()
 
     def initialize_form(self):
-        self.window.scroll_x = Scrollbar(self.window, orient=HORIZONTAL)
-        self.window.scroll_y = Scrollbar(self.window, orient=VERTICAL)
-
         body_frame = self.create_frame(anchor=NW,
                                        border_width=0,
                                        relief=SOLID,
@@ -31,15 +29,16 @@ class MainFrameDesigner(IFormDesigner):
                                           pady=20)
 
         self.add_label(loading_frame,
-                       label_text="Загрузите файл:")
+                       label_text="Load file:")
 
         self.add_button_text(click_handler=self.frame.load_button_clicked,
                              frame=loading_frame,
-                             text="Загрузить",
+                             text="Import",
                              padx=5,
                              pady=15,
                              side=LEFT)
 
+    # Creating frame on root frame.
     def create_frame(self,
                      root_frame=None,
                      anchor=NW,
@@ -47,6 +46,7 @@ class MainFrameDesigner(IFormDesigner):
                      relief=SOLID,
                      padx=0,
                      pady=0):
+
         if not root_frame:
             root_frame = self.window
 
@@ -78,15 +78,17 @@ class MainFrameDesigner(IFormDesigner):
                         text='Click Me!',
                         padx=0,
                         pady=0,
-                        side=LEFT):
+                        side=LEFT) -> Button:
         button = Button(frame, text=text, command=click_handler)
         button.pack(
             padx=padx,
             pady=pady,
             side=side)
 
+        return button
+
     def visualise_dataframe(self, dataframe: DataFrame):
-        dataset_frame = self.create_frame()
+        self.dataset_frame = self.create_frame()
 
         n_cols = dataframe.shape[1]
 
@@ -94,15 +96,23 @@ class MainFrameDesigner(IFormDesigner):
 
         i = 0
         for j, col in enumerate(column_names):
-            text = Text(dataset_frame, width=7, height=1, bg="#9BC2E6")
-            text.grid(row=i, column=j)
+            column = Column(col)
+            button = Button(self.dataset_frame,
+                            command=column.drop_button_clicked,
+                            text="Using")
+            button.grid(row=i, column=j)
+            column.button = button
+
+            column.add_to_droplist.add_handler(self.frame.add_to_droplist)
+            column.remove_from_droplist.add_handler(self.frame.remove_from_droplist)
+
+            text = Text(self.dataset_frame, width=7, height=1, bg="#9BC2E6")
+            text.grid(row=i + 1, column=j)
             text.insert(INSERT, col)
 
         # adding 5 the other rows into the grid.
         for i in range(5):
             for j in range(n_cols):
-                text = Text(dataset_frame, width=7, height=1)
-                text.grid(row=i + 1, column=j)
+                text = Text(self.dataset_frame, width=7, height=1)
+                text.grid(row=i + 2, column=j)
                 text.insert(INSERT, dataframe.loc[i][j])
-
-

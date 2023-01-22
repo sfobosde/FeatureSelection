@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="add creating labels in designer">
+    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="move designer interface">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/column.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/column.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Event.py" beforeDir="false" afterPath="$PROJECT_DIR$/Event.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Presenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserForms/IFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/IFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IFormDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IFormDesigner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" afterDir="false" />
@@ -131,7 +134,28 @@
       <option name="project" value="LOCAL" />
       <updated>1674421444670</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add dataframe visualise">
+      <created>1674424755425</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674424755425</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add/remove from drop list added">
+      <created>1674429440288</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674429440288</updated>
+    </task>
+    <task id="LOCAL-00013" summary="move designer interface">
+      <created>1674429771160</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1674429771160</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,6 +192,9 @@
     <MESSAGE value="prepare to add unittest" />
     <MESSAGE value="refactor framedesigner" />
     <MESSAGE value="add creating labels in designer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add creating labels in designer" />
+    <MESSAGE value="add dataframe visualise" />
+    <MESSAGE value="add/remove from drop list added" />
+    <MESSAGE value="move designer interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="move designer interface" />
   </component>
 </project>

@@ -8,5 +8,5 @@ main_frame = MainFrame("Feature Selection", '1280x720')
 # Create entity manager  object.
 feature_selection_core = FeatureSelectionCore()
 
-# Create presentor.
+# Create presenter.
 presenter = Presenter(main_frame, feature_selection_core)
