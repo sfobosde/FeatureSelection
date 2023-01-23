@@ -15,7 +15,6 @@ class Column:
 
     # Handle button click.
     def drop_button_clicked(self):
-        print("Column handler")
         if self.is_using:
             # Selected as to drop.
             self.button.config(text="Dropping")

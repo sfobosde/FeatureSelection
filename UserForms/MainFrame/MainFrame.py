@@ -14,9 +14,14 @@ class MainFrame(IMainFrame):
         self.window = Tk()
         self.window.geometry(size)
         self.window.title(title)
+
         self.__designer = MainFrameDesigner(self)
+
         self.add_dataset_file = UserEvent()
-        self.drop_columns_list = []
+        self.drop_included_columns = UserEvent()
+        self.get_bar_graph = UserEvent()
+
+        self.__drop_list = []
 
     # Show generated form.
     def show(self):
@@ -53,13 +58,26 @@ class MainFrame(IMainFrame):
         self.__designer.visualise_dataframe(dataset)
 
     # Add column to exclude list.
-    def add_to_droplist(self, column_name):
-        print("add to drop list (mainFrame)")
-        self.drop_columns_list.append(column_name)
-        print(self.drop_columns_list)
+    def add_to_dl(self, column_name):
+        self.__drop_list.append(column_name)
 
     # Remove column from exclude list.
-    def remove_from_droplist(self, column_name):
-        print("remove from drop list (mainFrame)")
-        self.drop_columns_list.remove(column_name)
-        print(self.drop_columns_list)
+    def remove_from_dl(self, column_name):
+        self.__drop_list.remove(column_name)
+
+    # Drop included columns.
+    def drop_columns(self):
+        self.drop_included_columns(self.__drop_list)
+
+    # Catch cleaned by core dataset.
+    def show_cleaned_dataframe(self, dataset):
+        self.__designer.show_cleaned_dataset(dataset)
+
+    # Handle choice in radiobutton.
+    def column_selected(self):
+        self.__designer.selected_column
+        pass
+
+
+
+
