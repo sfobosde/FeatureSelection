@@ -15,7 +15,7 @@ class IFormDesigner:
     def add_label(self, frame, label_text="", padx=0, pady=0, side=LEFT, font=("Arial", 14)):
         pass
 
-    def add_button_text(self, frame, click_handler, text='Click Me!', padx=0, pady=0, side=LEFT):
+    def add_button_text(self, frame, click_handler, text='Click Me!'):
         pass
 
     def create_frame(self, frame, anchor=NW, border_width=0, relief=SOLID, padx=0, pady=0):

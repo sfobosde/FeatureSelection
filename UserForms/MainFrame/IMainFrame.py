@@ -12,6 +12,9 @@ class IMainFrame(IFrame):
     # Get bar graph of column.
     get_bar_graph: UserEvent
 
+    # Normalize data.
+    nomalize_data: UserEvent
+
     # The list of exclude columns names.
     __drop_list: list
 
