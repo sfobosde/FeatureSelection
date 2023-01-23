@@ -71,3 +71,7 @@ class MainFrame(IMainFrame):
     def show_cleaned_dataframe(self, dataset):
         self.__designer.show_cleaned_dataset(dataset)
 
+    # Handle choice in radiobutton.
+    def column_selected(self):
+        print(self.__designer.selected_column.get())
+

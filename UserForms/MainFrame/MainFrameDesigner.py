@@ -12,6 +12,7 @@ class MainFrameDesigner(IFormDesigner):
         self.window = frame.window
         self.frame = frame
         self.initialize_form()
+        self.selected_column = IntVar()
 
     def initialize_form(self):
         body_frame = self.create_frame(anchor=NW,
@@ -97,18 +98,20 @@ class MainFrameDesigner(IFormDesigner):
         for i in range(count):
             for j in range(n_cols):
                 text = Text(self.dataset_frame, width=7, height=1)
-                text.grid(row=i + 2, column=j)
+                text.grid(row=i + 3, column=j)
                 text.insert(INSERT, dataframe.loc[i][j])
 
     def show_dataframe_headers(self, col, i, j):
         text = Text(self.dataset_frame, width=7, height=1, bg="#9BC2E6")
-        text.grid(row=i + 1, column=j)
+        text.grid(row=i + 2, column=j)
         text.insert(INSERT, col)
 
     def visualise_dataframe(self, dataframe: DataFrame):
-        self.dataset_frame = self.create_frame()
+        self.dataset_frame = self.create_frame(pady=20, padx=20)
 
         column_names = dataframe.columns
+
+        self.create_choice_list(column_names)
 
         i = 0
         for j, col in enumerate(column_names):
@@ -116,7 +119,7 @@ class MainFrameDesigner(IFormDesigner):
             button = Button(self.dataset_frame,
                             command=column.drop_button_clicked,
                             text="Using")
-            button.grid(row=i, column=j)
+            button.grid(row=i+1, column=j)
             column.button = button
 
             column.add_to_droplist.add_handler(self.frame.add_to_droplist)
@@ -128,8 +131,7 @@ class MainFrameDesigner(IFormDesigner):
 
     # Print new dataset.
     def show_cleaned_dataset(self, dataframe):
-        self.dataset_frame = self.create_frame()
-
+        self.dataset_frame = self.create_frame(pady=20, padx=20)
         column_names = dataframe.columns
 
         i = 0
@@ -137,3 +139,16 @@ class MainFrameDesigner(IFormDesigner):
             self.show_dataframe_headers(col, i, j)
 
         self.show_elements(dataframe)
+
+    def create_choice_list(self, variants: list):
+        j = 0
+        for variant in variants:
+            radiobutton = Radiobutton(self.dataset_frame,
+                                      text=variant,
+                                      value=j,
+                                      variable=self.selected_column,
+                                      command=self.frame.column_selected,
+                                      width=8,
+                                      font=("Arial", 5))
+            radiobutton.grid(column=j, row=0)
+            j += 1

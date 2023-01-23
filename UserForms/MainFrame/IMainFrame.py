@@ -1,3 +1,5 @@
+from tkinter import Variable
+
 from Event import UserEvent
 from UserForms.IFrame import IFrame
 
@@ -30,4 +32,8 @@ class IMainFrame(IFrame):
 
     # Catch cleaned by core dataset.
     def show_cleaned_dataframe(self, dataset):
+        pass
+
+    # Handle choice in radiobutton.
+    def column_selected(self):
         pass
