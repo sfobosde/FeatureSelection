@@ -56,8 +56,8 @@ class MainFrameDesigner(IFormDesigner):
                                                      text="Show column Bar")
 
         self.show_normalized = self.add_button_text(frame=control_frame,
-                                                    click_handler=self.create_bar_graph,
-                                                    text="Show normalized data")
+                                                    click_handler=self.frame.calculate_normalized,
+                                                    text="Standardize data")
 
         self.drop_columns_button = self.add_button_text(frame=control_frame,
                                                         click_handler=self.frame.drop_columns,
@@ -111,24 +111,24 @@ class MainFrameDesigner(IFormDesigner):
 
         return button
 
-    def show_elements(self, dataframe: DataFrame, count=5):
-        n_cols = dataframe.shape[1]
+    def show_elements(self, dataset: DataFrame, count=5):
+        n_cols = dataset.shape[1]
         # adding 5 the other rows into the grid.
         for i in range(count):
             for j in range(n_cols):
                 text = Text(self.dataset_frame, width=7, height=1)
                 text.grid(row=i + 3, column=j)
-                text.insert(INSERT, dataframe.loc[i][j])
+                text.insert(INSERT, dataset.loc[i][j])
 
-    def show_dataframe_headers(self, col, i, j):
+    def show_dataset_headers(self, col, i, j):
         text = Text(self.dataset_frame, width=7, height=1, bg="#9BC2E6")
         text.grid(row=i + 2, column=j)
         text.insert(INSERT, col)
 
-    def visualise_dataframe(self, dataframe: DataFrame):
-        self.dataset = dataframe
+    def visualise_dataset(self, dataset: DataFrame):
+        self.dataset = dataset
         self.dataset_frame = self.create_frame(pady=20, padx=20)
-        column_names = dataframe.columns
+        column_names = dataset.columns
 
         self.create_choice_list(column_names)
 
@@ -144,9 +144,9 @@ class MainFrameDesigner(IFormDesigner):
             column.add_to_droplist.add_handler(self.frame.add_to_dl)
             column.remove_from_droplist.add_handler(self.frame.remove_from_dl)
 
-            self.show_dataframe_headers(col, i, j)
+            self.show_dataset_headers(col, i, j)
 
-        self.show_elements(dataframe)
+        self.show_elements(dataset)
 
     # Print new dataset.
     def show_cleaned_dataset(self, dataframe):
@@ -155,7 +155,7 @@ class MainFrameDesigner(IFormDesigner):
 
         i = 0
         for j, col in enumerate(column_names):
-            self.show_dataframe_headers(col, i, j)
+            self.show_dataset_headers(col, i, j)
 
         self.show_elements(dataframe)
 

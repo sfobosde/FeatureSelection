@@ -20,6 +20,7 @@ class MainFrame(IMainFrame):
         self.add_dataset_file = UserEvent()
         self.drop_included_columns = UserEvent()
         self.get_bar_graph = UserEvent()
+        self.standardize_dataset = UserEvent()
 
         self.__drop_list = []
 
@@ -34,7 +35,7 @@ class MainFrame(IMainFrame):
     def handle_error(self, error: Exception):
         error_frame = Tk()
 
-        error_label = LabelFrame(error_frame, text="Возникла ошибка при выполнении действия.")
+        error_label = LabelFrame(error_frame, text="Error occurred in runtime.")
         error_label.pack(fill="both")
 
         error_text = Label(error_label)
@@ -55,7 +56,7 @@ class MainFrame(IMainFrame):
     # Catch read by core dataset.
     def receive_dataset(self, dataset):
         # Call designer method to visualise dataset.
-        self.__designer.visualise_dataframe(dataset)
+        self.__designer.visualise_dataset(dataset)
 
     # Add column to exclude list.
     def add_to_dl(self, column_name):
@@ -73,11 +74,6 @@ class MainFrame(IMainFrame):
     def show_cleaned_dataframe(self, dataset):
         self.__designer.show_cleaned_dataset(dataset)
 
-    # Handle choice in radiobutton.
-    def column_selected(self):
-        self.__designer.selected_column
-        pass
-
-
-
-
+    # Normalize (standardize) data.
+    def calculate_normalized(self):
+        self.standardize_dataset(self.__designer.get_column_name())

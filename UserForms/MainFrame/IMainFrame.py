@@ -13,7 +13,7 @@ class IMainFrame(IFrame):
     get_bar_graph: UserEvent
 
     # Normalize data.
-    nomalize_data: UserEvent
+    standardize_dataset: UserEvent
 
     # The list of exclude columns names.
     __drop_list: list
@@ -40,4 +40,8 @@ class IMainFrame(IFrame):
 
     # Handle choice in radiobutton.
     def column_selected(self):
+        pass
+
+    # Normalize (standartize) data.
+    def calculate_normalized(self):
         pass
