@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="resolve choice key output value">
+    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="installed matplot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Presenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Presenter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" afterDir="false" />
@@ -169,7 +172,21 @@
       <option name="project" value="LOCAL" />
       <updated>1674439595726</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="save befor matplot install">
+      <created>1674440466013</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1674440466013</updated>
+    </task>
+    <task id="LOCAL-00018" summary="installed matplot">
+      <created>1674440571478</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1674440571478</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +229,8 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="show only required columns" />
     <MESSAGE value="resolve choice key output value" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolve choice key output value" />
+    <MESSAGE value="save befor matplot install" />
+    <MESSAGE value="installed matplot" />
+    <option name="LAST_COMMIT_MESSAGE" value="installed matplot" />
   </component>
 </project>

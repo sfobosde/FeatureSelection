@@ -22,6 +22,9 @@ class Presenter:
 
         self.featureSelectionCore.show_cleaned_dataframe.add_handler(self.mainFrame.show_cleaned_dataframe)
 
+        # Get bar graph by column.
+        self.mainFrame.get_bar_graph.add_handler(self.featureSelectionCore.create_bar_graph)
+
         try:
             self.mainFrame.show()
         except Exception as e:

@@ -15,3 +15,7 @@ class IFeatureSelectionCore:
     # The handler of dropping columns from set event.
     def drop_columns(self, columns: list):
         pass
+
+    # Generate bar graph.
+    def create_bar_graph(self, column):
+        pass

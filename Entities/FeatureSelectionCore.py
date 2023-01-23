@@ -3,6 +3,8 @@ import pandas as pd
 
 from Event import UserEvent
 
+import matplotlib.pyplot as plt
+
 
 # Calculation core class.
 class FeatureSelectionCore(IFeatureSelectionCore):
@@ -21,3 +23,4 @@ class FeatureSelectionCore(IFeatureSelectionCore):
     def drop_columns(self, columns: list):
         self.__cleaned_dataframe = self.__dataframe.drop(columns, axis=1)
         self.show_cleaned_dataframe(self.__cleaned_dataframe)
+

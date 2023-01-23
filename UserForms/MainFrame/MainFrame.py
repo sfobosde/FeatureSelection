@@ -19,6 +19,8 @@ class MainFrame(IMainFrame):
 
         self.add_dataset_file = UserEvent()
         self.drop_included_columns = UserEvent()
+        self.get_bar_graph = UserEvent()
+
         self.__drop_list = []
 
     # Show generated form.
@@ -56,11 +58,11 @@ class MainFrame(IMainFrame):
         self.__designer.visualise_dataframe(dataset)
 
     # Add column to exclude list.
-    def add_to_droplist(self, column_name):
+    def add_to_dl(self, column_name):
         self.__drop_list.append(column_name)
 
     # Remove column from exclude list.
-    def remove_from_droplist(self, column_name):
+    def remove_from_dl(self, column_name):
         self.__drop_list.remove(column_name)
 
     # Drop included columns.
@@ -73,9 +75,9 @@ class MainFrame(IMainFrame):
 
     # Handle choice in radiobutton.
     def column_selected(self):
-        print(self.__designer.selected_column.get())
-
-    # Get bar graph about key column.
-    def get_keycol_bar(self):
+        self.__designer.selected_column
         pass
+
+
+
 

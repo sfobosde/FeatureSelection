@@ -1,5 +1,3 @@
-from tkinter import Variable
-
 from Event import UserEvent
 from UserForms.IFrame import IFrame
 
@@ -11,6 +9,9 @@ class IMainFrame(IFrame):
     # The event to drop columns.
     drop_included_columns: UserEvent
 
+    # Get bar graph of column.
+    get_bar_graph: UserEvent
+
     # The list of exclude columns names.
     __drop_list: list
 
@@ -19,11 +20,11 @@ class IMainFrame(IFrame):
         pass
 
     # Add column to exclude list.
-    def add_to_droplist(self, column_name):
+    def add_to_dl(self, column_name):
         pass
 
     # Remove column from exclude list.
-    def remove_from_droplist(self, column_name):
+    def remove_from_dl(self, column_name):
         pass
 
     # Drop included columns.
@@ -36,8 +37,4 @@ class IMainFrame(IFrame):
 
     # Handle choice in radiobutton.
     def column_selected(self):
-        pass
-
-    # Get bar graph about key column.
-    def get_keycol_bar(self):
         pass
