@@ -37,3 +37,7 @@ class IMainFrame(IFrame):
     # Handle choice in radiobutton.
     def column_selected(self):
         pass
+
+    # Get bar graph about key column.
+    def get_keycol_bar(self):
+        pass

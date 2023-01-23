@@ -29,6 +29,18 @@ class MainFrameDesigner(IFormDesigner):
                                           padx=20,
                                           pady=20)
 
+        control_frame = self.create_frame(root_frame=body_frame,
+                                          border_width=0,
+                                          padx=20,
+                                          pady=20)
+
+        self.bar_graph = self.add_button_text(frame=control_frame,
+                             click_handler=self.frame.get_keycol_bar,
+                             text="Bar Graph",
+                             padx=10,
+                             pady=10)
+        self.bar_graph.grid(column=0, row=0)
+
         self.add_label(loading_frame,
                        label_text="Load file:")
 

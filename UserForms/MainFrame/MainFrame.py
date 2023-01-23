@@ -75,3 +75,7 @@ class MainFrame(IMainFrame):
     def column_selected(self):
         print(self.__designer.selected_column.get())
 
+    # Get bar graph about key column.
+    def get_keycol_bar(self):
+        pass
+
