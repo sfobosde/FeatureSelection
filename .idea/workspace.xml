@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="move designer interface">
+    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/column.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/column.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Event.py" beforeDir="false" afterPath="$PROJECT_DIR$/Event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/column.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Column.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Presenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Presenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/IFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/IFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IFormDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IFormDesigner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674429771160</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="refactor">
+      <created>1674430691676</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1674430691676</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,6 +199,7 @@
     <MESSAGE value="add dataframe visualise" />
     <MESSAGE value="add/remove from drop list added" />
     <MESSAGE value="move designer interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="move designer interface" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>

@@ -6,8 +6,11 @@ class IMainFrame(IFrame):
     # The event calling core handle and send dataset file.
     add_dataset_file: UserEvent
 
+    # The event to drop columns.
+    drop_included_columns: UserEvent
+
     # The list of exclude columns names.
-    drop_columns_list: list
+    __drop_list: list
 
     # Catch read by core dataset.
     def receive_dataset(self, dataset):
@@ -19,4 +22,12 @@ class IMainFrame(IFrame):
 
     # Remove column from exclude list.
     def remove_from_droplist(self, column_name):
+        pass
+
+    # Drop included columns.
+    def drop_columns(self):
+        pass
+
+    # Catch cleaned by core dataset.
+    def show_cleaned_dataframe(self, dataset):
         pass

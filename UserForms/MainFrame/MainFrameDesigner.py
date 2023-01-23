@@ -2,7 +2,7 @@ from tkinter import *
 
 from pandas import DataFrame
 
-from Entities.column import Column
+from Entities.Column import Column
 from UserForms.MainFrame.IFormDesigner import IFormDesigner
 from UserForms.MainFrame.IMainFrame import IMainFrame
 
@@ -37,6 +37,10 @@ class MainFrameDesigner(IFormDesigner):
                              padx=5,
                              pady=15,
                              side=LEFT)
+
+        self.add_button_text(click_handler=self.frame.drop_columns,
+                             frame=body_frame,
+                             text="Drop selected columns")
 
     # Creating frame on root frame.
     def create_frame(self,
@@ -87,10 +91,22 @@ class MainFrameDesigner(IFormDesigner):
 
         return button
 
+    def show_elements(self, dataframe: DataFrame, count=5):
+        n_cols = dataframe.shape[1]
+        # adding 5 the other rows into the grid.
+        for i in range(count):
+            for j in range(n_cols):
+                text = Text(self.dataset_frame, width=7, height=1)
+                text.grid(row=i + 2, column=j)
+                text.insert(INSERT, dataframe.loc[i][j])
+
+    def show_dataframe_headers(self, col, i, j):
+        text = Text(self.dataset_frame, width=7, height=1, bg="#9BC2E6")
+        text.grid(row=i + 1, column=j)
+        text.insert(INSERT, col)
+
     def visualise_dataframe(self, dataframe: DataFrame):
         self.dataset_frame = self.create_frame()
-
-        n_cols = dataframe.shape[1]
 
         column_names = dataframe.columns
 
@@ -106,13 +122,18 @@ class MainFrameDesigner(IFormDesigner):
             column.add_to_droplist.add_handler(self.frame.add_to_droplist)
             column.remove_from_droplist.add_handler(self.frame.remove_from_droplist)
 
-            text = Text(self.dataset_frame, width=7, height=1, bg="#9BC2E6")
-            text.grid(row=i + 1, column=j)
-            text.insert(INSERT, col)
+            self.show_dataframe_headers(col, i, j)
 
-        # adding 5 the other rows into the grid.
-        for i in range(5):
-            for j in range(n_cols):
-                text = Text(self.dataset_frame, width=7, height=1)
-                text.grid(row=i + 2, column=j)
-                text.insert(INSERT, dataframe.loc[i][j])
+        self.show_elements(dataframe)
+
+    # Print new dataset.
+    def show_cleaned_dataset(self, dataframe):
+        self.dataset_frame = self.create_frame()
+
+        column_names = dataframe.columns
+
+        i = 0
+        for j, col in enumerate(column_names):
+            self.show_dataframe_headers(col, i, j)
+
+        self.show_elements(dataframe)
