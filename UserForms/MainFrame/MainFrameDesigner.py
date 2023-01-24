@@ -11,8 +11,11 @@ from UserForms.MainFrame.IMainFrame import IMainFrame
 
 import matplotlib.pyplot as plt
 
+
 class MainFrameDesigner(IFormDesigner):
     bar_graph_button: Button
+    show_normalized: Button
+    drop_columns_button: Button
 
     def __init__(self, frame: IMainFrame):
         self.window = frame.window
@@ -36,6 +39,13 @@ class MainFrameDesigner(IFormDesigner):
                                           padx=20,
                                           pady=20)
 
+        self.add_label(loading_frame,
+                       label_text="Load file:")
+
+        self.add_button_text(frame=loading_frame,
+                             click_handler=self.frame.load_button_clicked,
+                             text="Import").pack(padx=5, pady=15, side=LEFT)
+
         control_frame = self.create_frame(root_frame=body_frame,
                                           border_width=0,
                                           padx=20,
@@ -43,24 +53,19 @@ class MainFrameDesigner(IFormDesigner):
 
         self.bar_graph_button = self.add_button_text(frame=control_frame,
                                                      click_handler=self.create_bar_graph,
-                                                     text="Show column Bar",
-                                                     padx=10,
-                                                     pady=10)
+                                                     text="Show column Bar")
+
+        self.show_normalized = self.add_button_text(frame=control_frame,
+                                                    click_handler=self.frame.calculate_normalized,
+                                                    text="Standardize data")
+
+        self.drop_columns_button = self.add_button_text(frame=control_frame,
+                                                        click_handler=self.frame.drop_columns,
+                                                        text="Drop selected columns")
+
         self.bar_graph_button.grid(column=0, row=0)
-
-        self.add_label(loading_frame,
-                       label_text="Load file:")
-
-        self.add_button_text(click_handler=self.frame.load_button_clicked,
-                             frame=loading_frame,
-                             text="Import",
-                             padx=5,
-                             pady=15,
-                             side=LEFT)
-
-        self.add_button_text(click_handler=self.frame.drop_columns,
-                             frame=body_frame,
-                             text="Drop selected columns")
+        self.show_normalized.grid(column=1, row=0)
+        self.drop_columns_button.grid(column=2, row=0)
 
     # Creating frame on root frame.
     def create_frame(self,
@@ -86,49 +91,44 @@ class MainFrameDesigner(IFormDesigner):
     def add_label(self,
                   frame,
                   label_text="",
-                  padx=0,
-                  pady=0,
+                  padx=5,
+                  pady=5,
                   side=LEFT,
                   font=("Arial", 14)):
         label = Label(frame, text=label_text, font=font)
         label.pack(
             padx=padx,
             pady=pady,
-            side=side,)
+            side=side, )
 
     def add_button_text(self,
                         frame,
                         click_handler,
                         text='Click Me!',
-                        padx=0,
-                        pady=0,
-                        side=LEFT) -> Button:
-        button = Button(frame, text=text, command=click_handler)
-        button.pack(
-            padx=padx,
-            pady=pady,
-            side=side)
+                        padx=5,
+                        pady=5) -> Button:
+        button = Button(frame, text=text, command=click_handler, padx=padx, pady=pady)
 
         return button
 
-    def show_elements(self, dataframe: DataFrame, count=5):
-        n_cols = dataframe.shape[1]
+    def show_elements(self, dataset: DataFrame, count=5):
+        n_cols = dataset.shape[1]
         # adding 5 the other rows into the grid.
         for i in range(count):
             for j in range(n_cols):
                 text = Text(self.dataset_frame, width=7, height=1)
                 text.grid(row=i + 3, column=j)
-                text.insert(INSERT, dataframe.loc[i][j])
+                text.insert(INSERT, dataset.loc[i][j])
 
-    def show_dataframe_headers(self, col, i, j):
+    def show_dataset_headers(self, col, i, j):
         text = Text(self.dataset_frame, width=7, height=1, bg="#9BC2E6")
         text.grid(row=i + 2, column=j)
         text.insert(INSERT, col)
 
-    def visualise_dataframe(self, dataframe: DataFrame):
-        self.dataset = dataframe
+    def visualise_dataset(self, dataset: DataFrame):
+        self.dataset = dataset
         self.dataset_frame = self.create_frame(pady=20, padx=20)
-        column_names = dataframe.columns
+        column_names = dataset.columns
 
         self.create_choice_list(column_names)
 
@@ -138,15 +138,15 @@ class MainFrameDesigner(IFormDesigner):
             button = Button(self.dataset_frame,
                             command=column.drop_button_clicked,
                             text="Using")
-            button.grid(row=i+1, column=j)
+            button.grid(row=i + 1, column=j)
             column.button = button
 
             column.add_to_droplist.add_handler(self.frame.add_to_dl)
             column.remove_from_droplist.add_handler(self.frame.remove_from_dl)
 
-            self.show_dataframe_headers(col, i, j)
+            self.show_dataset_headers(col, i, j)
 
-        self.show_elements(dataframe)
+        self.show_elements(dataset)
 
     # Print new dataset.
     def show_cleaned_dataset(self, dataframe):
@@ -155,7 +155,7 @@ class MainFrameDesigner(IFormDesigner):
 
         i = 0
         for j, col in enumerate(column_names):
-            self.show_dataframe_headers(col, i, j)
+            self.show_dataset_headers(col, i, j)
 
         self.show_elements(dataframe)
 
@@ -202,4 +202,3 @@ class MainFrameDesigner(IFormDesigner):
         figure_canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
         graphic_window.mainloop()
-
