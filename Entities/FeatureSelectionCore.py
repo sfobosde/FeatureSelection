@@ -1,5 +1,8 @@
+from matplotlib import pyplot as plt
+
 from Entities.IFeatureSelectionCore import IFeatureSelectionCore
 import pandas as pd
+import seaborn as sns
 
 from Event import UserEvent
 
@@ -9,6 +12,7 @@ class FeatureSelectionCore(IFeatureSelectionCore):
     def __init__(self):
         self.show_dataset = UserEvent()
         self.show_cleaned_dataset = UserEvent()
+        self.throw_exception = UserEvent()
 
     # Handle event and catch dataset file.
     def receive_dataset_file(self, ds_file):
@@ -28,8 +32,7 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         self.standardize_dataset(key_column)
 
     # Standardize dataset.
-    def standardize_dataset(self, key_column):
-        print(f"key column: {key_column}")
+    def standardize_dataset(self, key_column: str):
         column = self.dataset[key_column]
         self.standardized_dataset = (self.cleaned_dataset - self.cleaned_dataset.mean()) / (self.cleaned_dataset.std())
 
@@ -38,7 +41,10 @@ class FeatureSelectionCore(IFeatureSelectionCore):
                        var_name="features",
                        value_name='value')
 
-    def show_graph(self):
-        pass
-
+    # Calculations start event.
+    def start_calculations(self):
+        try:
+            self.show_dataset(self.dataset)
+        except AttributeError as atrErr:
+            self.throw_exception(Exception(f"No data to calculate (dataset file not selected). \n{str(atrErr)}"))
 

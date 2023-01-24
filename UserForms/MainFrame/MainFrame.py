@@ -21,6 +21,7 @@ class MainFrame(IMainFrame):
         self.drop_included_columns = UserEvent()
         self.get_bar_graph = UserEvent()
         self.standardize_dataset = UserEvent()
+        self.calculate_statistics = UserEvent()
 
         self.__drop_list = []
 
@@ -38,7 +39,8 @@ class MainFrame(IMainFrame):
         error_label = LabelFrame(error_frame, text="Error occurred in runtime.")
         error_label.pack(fill="both")
 
-        error_text = Label(error_label)
+        error_text = Label(error_label,
+                           text=str(error))
         error_text.pack()
 
         error_label.mainloop()
@@ -68,6 +70,7 @@ class MainFrame(IMainFrame):
 
     # Drop included columns.
     def drop_columns(self):
+        print(self.__drop_list)
         self.drop_included_columns(self.__drop_list)
 
     # Catch cleaned by core dataset.
@@ -77,3 +80,8 @@ class MainFrame(IMainFrame):
     # Normalize (standardize) data.
     def calculate_normalized(self):
         self.standardize_dataset(self.__designer.get_column_name())
+
+    # Handler of starting calculations.
+    def start_calculation(self):
+        self.calculate_statistics()
+

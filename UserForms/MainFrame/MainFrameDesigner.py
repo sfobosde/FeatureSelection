@@ -16,6 +16,7 @@ class MainFrameDesigner(IFormDesigner):
     bar_graph_button: Button
     show_normalized: Button
     drop_columns_button: Button
+    start_calculation_button: Button
 
     def __init__(self, frame: IMainFrame):
         self.window = frame.window
@@ -51,6 +52,10 @@ class MainFrameDesigner(IFormDesigner):
                                           padx=20,
                                           pady=20)
 
+        self.start_calculation_button = self.add_button_text(frame=control_frame,
+                                                             click_handler=self.frame.start_calculation,
+                                                             text="Calculate")
+
         self.bar_graph_button = self.add_button_text(frame=control_frame,
                                                      click_handler=self.create_bar_graph,
                                                      text="Show column Bar")
@@ -63,9 +68,11 @@ class MainFrameDesigner(IFormDesigner):
                                                         click_handler=self.frame.drop_columns,
                                                         text="Drop selected columns")
 
-        self.bar_graph_button.grid(column=0, row=0)
-        self.show_normalized.grid(column=1, row=0)
+        self.start_calculation_button.grid(column=0, row=0)
+        self.bar_graph_button.grid(column=1, row=0)
         self.drop_columns_button.grid(column=2, row=0)
+        self.show_normalized.grid(column=3, row=0)
+
 
     # Creating frame on root frame.
     def create_frame(self,

@@ -21,6 +21,9 @@ class IFeatureSelectionCore:
     # Violoned dataset.
     violoned_dataset: DataFrame
 
+    # Raise exception.
+    throw_exception: UserEvent
+
     # Handle event and catch dataset file.
     def receive_dataset_file(self, file):
         pass
@@ -35,4 +38,8 @@ class IFeatureSelectionCore:
 
     # Standardize handler.
     def handle_standardize(self, key_column):
+        pass
+
+    # Calculations start event.
+    def start_calculations(self):
         pass
