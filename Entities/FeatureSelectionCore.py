@@ -48,25 +48,48 @@ class FeatureSelectionCore(IFeatureSelectionCore):
     # Standardize handler.
     def handle_standardize(self, key_column):
         self.key_column = key_column
-        self.standardize_dataset()
+
+        self.iterate_columns(10)
+
+    def iterate_columns(self, step):
+        i = 0
+        while i + step < len(self.cleaned_dataset):
+            columns_range = [i, i + step]
+            i += step
+            self.standardize_dataset(columns_range)
+        self.standardize_dataset([i, len(self.cleaned_dataset)])
 
     # Standardize dataset.
-    def standardize_dataset(self):
+    def standardize_dataset(self, columns_range: list):
         if not self.key_column:
             self.key_column = self.dataset.columns[0]
 
         column = self.dataset[self.key_column]
         data = (self.cleaned_dataset - self.cleaned_dataset.mean()) / (self.cleaned_dataset.std())
 
-        data = pd.concat([column, data.iloc[:, 0:10]], axis=1)
+        data = pd.concat([column, data.iloc[:, columns_range[0]:columns_range[1]]], axis=1)
+
         self.standardized_dataset = pd.melt(data, id_vars=self.key_column,
                                             var_name="features",
                                             value_name='value')
+        self.show_violinplot()
+
+    # Show violined plot.
+    def show_violinplot(self):
+        plt.figure(figsize=(10, 10))
+        try:
+            sns.violinplot(x="features", y="value", hue=self.key_column, split=True, data=self.standardized_dataset,
+                           inner="quart")
+        except:
+            sns.violinplot(x="features", y="value", hue=self.key_column, data=self.standardized_dataset, inner="quart")
+
+        plt.xticks(rotation=90)
+        plt.show()
 
     # Calculations start event.
     def start_calculations(self):
         self.exclude_columns()
         self.show_cleaned_dataset(self.cleaned_dataset)
-        self.standardize_dataset()
-        self.show_cleaned_dataset(self.standardized_dataset)
+        self.iterate_columns(10)
+
 

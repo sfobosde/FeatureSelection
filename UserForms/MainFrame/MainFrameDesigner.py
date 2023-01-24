@@ -69,6 +69,7 @@ class MainFrameDesigner(IFormDesigner):
                                                         text="Drop selected columns")
 
         self.start_calculation_button.grid(column=0, row=0)
+        self.start_column = Entry()
         self.bar_graph_button.grid(column=1, row=0)
         self.drop_columns_button.grid(column=2, row=0)
         self.show_normalized.grid(column=3, row=0)
