@@ -73,7 +73,6 @@ class MainFrameDesigner(IFormDesigner):
         self.drop_columns_button.grid(column=2, row=0)
         self.show_normalized.grid(column=3, row=0)
 
-
     # Creating frame on root frame.
     def create_frame(self,
                      root_frame=None,
