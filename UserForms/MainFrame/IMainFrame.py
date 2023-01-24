@@ -21,6 +21,9 @@ class IMainFrame(IFrame):
     # The list of exclude columns names.
     __drop_list: list
 
+    # Key column selected event.
+    key_column_selected: UserEvent
+
     # Catch errors.
     def handle_error(self, error: Exception):
         pass
@@ -43,10 +46,6 @@ class IMainFrame(IFrame):
 
     # Catch cleaned by core dataset.
     def show_cleaned_dataframe(self, dataset):
-        pass
-
-    # Handle choice in radiobutton.
-    def column_selected(self):
         pass
 
     # Normalize (standartize) data.

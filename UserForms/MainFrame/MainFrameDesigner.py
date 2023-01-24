@@ -22,7 +22,7 @@ class MainFrameDesigner(IFormDesigner):
         self.window = frame.window
         self.frame = frame
         self.initialize_form()
-        self.selected_column = IntVar()
+        self.selected_column = IntVar(value=0)
         self.dataset = None
 
     def initialize_form(self):
@@ -187,6 +187,7 @@ class MainFrameDesigner(IFormDesigner):
     # Handle selecting column.
     def column_selected(self):
         self.bar_graph_button.configure(text=f"Show {self.get_column_name()} bar graphic")
+        self.frame.key_column_selected(self.get_column_name())
 
     # Show selected column bar graphic clicked.
     def create_bar_graph(self):

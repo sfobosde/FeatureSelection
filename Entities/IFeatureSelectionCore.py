@@ -33,7 +33,7 @@ class IFeatureSelectionCore:
         pass
 
     # Standardize dataset.
-    def standardize_dataset(self, key_column):
+    def standardize_dataset(self):
         pass
 
     # Standardize handler.
@@ -42,4 +42,8 @@ class IFeatureSelectionCore:
 
     # Calculations start event.
     def start_calculations(self):
+        pass
+
+    # Get selected key column.
+    def catch_key_column(self, key_column):
         pass
