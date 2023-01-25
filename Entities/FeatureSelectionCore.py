@@ -1,3 +1,4 @@
+import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.feature_selection import SelectKBest, chi2, RFE, RFECV
 
@@ -163,7 +164,50 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         plt.figure()
         plt.xlabel("Количество выбранных признаков")
         plt.ylabel("Оценка перекрестной проверки количества выбранных признаков")
-        plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
+        plt.plot(range(1, len(rfecv.cv_results_["mean_test_score"]) + 1), rfecv.cv_results_["std_test_score"])
+        plt.show()
+
+        clf_rf_5 = RandomForestClassifier()
+        clr_rf_5 = clf_rf_5.fit(x_train, y_train)
+        importances = clr_rf_5.feature_importances_
+        std = np.std([tree.feature_importances_ for tree in clf_rf.estimators_],
+                     axis=0)
+        indices = np.argsort(importances)[::-1]
+
+        # сдесь выведется рейтинг признаков
+        print("Рейтинг признаков:")
+
+        for f in range(x_train.shape[1]):
+            print("%d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
+
+        # Отображение важности объектов древа
+
+        plt.figure(1, figsize=(14, 13))
+        plt.title("Feature importances")
+        plt.bar(range(x_train.shape[1]), importances[indices],
+                color="g", yerr=std[indices], align="center")
+        plt.xticks(range(x_train.shape[1]), x_train.columns[indices], rotation=90)
+        plt.xlim([-1, x_train.shape[1]])
+        plt.show()
+
+        # разделяем поток данных на 70 % основных и 30 % тестовых
+        x_train, x_test, y_train, y_test = train_test_split(self.cleaned_dataset, self.dataset[self.key_column], test_size=0.3, random_state=42)
+        # нормализуем данные
+        x_train_N = (x_train - x_train.mean()) / (x_train.max() - x_train.min())
+        x_test_N = (x_test - x_test.mean()) / (x_test.max() - x_test.min())
+
+        from sklearn.decomposition import PCA
+        pca = PCA()
+        pca.fit(x_train_N)
+
+        plt.figure(1, figsize=(14, 13))
+        plt.clf()
+        plt.axes([.2, .2, .7, .7])
+        plt.plot(pca.explained_variance_ratio_, linewidth=2)
+        plt.axis('tight')
+        plt.xlabel('n_components')
+        plt.ylabel('explained_variance_ratio_')
+
         plt.show()
 
     # Calculations start event.
