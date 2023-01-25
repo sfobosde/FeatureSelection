@@ -1,3 +1,4 @@
+import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.feature_selection import SelectKBest, chi2, RFE, RFECV
 
@@ -164,6 +165,29 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         plt.xlabel("Количество выбранных признаков")
         plt.ylabel("Оценка перекрестной проверки количества выбранных признаков")
         plt.plot(range(1, len(rfecv.cv_results_["mean_test_score"]) + 1), rfecv.cv_results_["std_test_score"])
+        plt.show()
+
+        clf_rf_5 = RandomForestClassifier()
+        clr_rf_5 = clf_rf_5.fit(x_train, y_train)
+        importances = clr_rf_5.feature_importances_
+        std = np.std([tree.feature_importances_ for tree in clf_rf.estimators_],
+                     axis=0)
+        indices = np.argsort(importances)[::-1]
+
+        # сдесь выведется рейтинг признаков
+        print("Рейтинг признаков:")
+
+        for f in range(x_train.shape[1]):
+            print("%d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
+
+        # Отображение важности объектов древа
+
+        plt.figure(1, figsize=(14, 13))
+        plt.title("Feature importances")
+        plt.bar(range(x_train.shape[1]), importances[indices],
+                color="g", yerr=std[indices], align="center")
+        plt.xticks(range(x_train.shape[1]), x_train.columns[indices], rotation=90)
+        plt.xlim([-1, x_train.shape[1]])
         plt.show()
 
     # Calculations start event.

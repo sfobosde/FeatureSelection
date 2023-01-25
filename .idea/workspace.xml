@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="resolve rfe">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="range resolved">
       <change beforePath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674625905455</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="range resolved">
+      <created>1674641321888</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1674641321888</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,7 +284,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add form designer" />
     <MESSAGE value="add import button and handler" />
     <MESSAGE value="add event cominication" />
     <MESSAGE value="install pandas" />
@@ -303,19 +308,20 @@
     <MESSAGE value="resolve violin plot error" />
     <MESSAGE value="resolve correlation heatmap" />
     <MESSAGE value="resolve rfe" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolve rfe" />
+    <MESSAGE value="range resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="range resolved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Entities/FeatureSelectionCore.py</url>
-          <line>117</line>
+          <line>118</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Entities/FeatureSelectionCore.py</url>
-          <line>165</line>
+          <line>166</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
