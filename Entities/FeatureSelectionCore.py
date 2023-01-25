@@ -163,7 +163,7 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         plt.figure()
         plt.xlabel("Количество выбранных признаков")
         plt.ylabel("Оценка перекрестной проверки количества выбранных признаков")
-        plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
+        plt.plot(range(1, len(rfecv.cv_results_["mean_test_score"]) + 1), rfecv.cv_results_["std_test_score"])
         plt.show()
 
     # Calculations start event.
