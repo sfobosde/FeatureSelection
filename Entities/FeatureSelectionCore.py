@@ -1,10 +1,16 @@
 from matplotlib import pyplot as plt
+from sklearn.feature_selection import SelectKBest, chi2, RFE, RFECV
 
 from Entities.IFeatureSelectionCore import IFeatureSelectionCore
 import pandas as pd
 import seaborn as sns
 
 from Event import UserEvent
+
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
 
 
 # Calculation core class.
@@ -108,13 +114,65 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         g.map_diag(sns.kdeplot, lw=3)
         plt.show()
 
+    def show_forest_classifier(self):
+        x_train, x_test, y_train, y_test = train_test_split(self.cleaned_dataset,
+                                                            self.dataset[self.key_column],
+                                                            test_size=0.3, random_state=42)
+        clf_rf = RandomForestClassifier(random_state=43)
+        clr_rf = clf_rf.fit(x_train, y_train)
+
+        ac = accuracy_score(y_test, clf_rf.predict(x_test))
+        print('Точность : ', ac)
+
+        cm = confusion_matrix(y_test, clf_rf.predict(x_test))
+        sns.heatmap(cm, annot=True, fmt="d")
+        #plt.show()
+
+        # Одномерный выбор признаков и классификация случайных древ.
+        select_feature = SelectKBest(chi2, k=5).fit(x_train, y_train)
+        print('Список баллов:', select_feature.scores_)
+        print('Список признаков:', x_train.columns)
+
+        print(pd.DataFrame(select_feature.scores_, x_train.columns))
+
+        x_train_2 = select_feature.transform(x_train)
+        x_test_2 = select_feature.transform(x_test)
+        # создаем случайный классификатор древа с n_estimators=10 (default)
+        clf_rf_2 = RandomForestClassifier()
+        clr_rf_2 = clf_rf_2.fit(x_train_2, y_train)
+        ac_2 = accuracy_score(y_test, clf_rf_2.predict(x_test_2))
+        print('Точность : ', ac_2)
+        cm_2 = confusion_matrix(y_test, clf_rf_2.predict(x_test_2))
+        sns.heatmap(cm_2, annot=True, fmt="d")
+
+        # RFE
+        clf_rf_3 = RandomForestClassifier()
+        rfe = RFE(estimator=clf_rf_3, n_features_to_select=5, step=1)
+        rfe = rfe.fit(x_train, y_train)
+        print('Выбрано 5 лучших признаков по версии rfe:', x_train.columns[rfe.support_])
+
+        # recursive elimination.
+        # Оценка «точности» пропорциональна количеству правильных классификаций.
+        clf_rf_4 = RandomForestClassifier()
+        rfecv = RFECV(estimator=clf_rf_4, step=1, cv=5, scoring='accuracy')  # 5-кратная перекрестная проверка
+        rfecv = rfecv.fit(x_train, y_train)
+
+        print('Оптимальное количество признаков :', rfecv.n_features_)
+        print('Лучшие признаки :', x_train.columns[rfecv.support_])
+
+        plt.figure()
+        plt.xlabel("Количество выбранных признаков")
+        plt.ylabel("Оценка перекрестной проверки количества выбранных признаков")
+        plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
+        plt.show()
+
     # Calculations start event.
     def start_calculations(self):
         self.exclude_columns()
         self.show_cleaned_dataset(self.cleaned_dataset)
         self.iterate_columns(10)
 
-        self.show_correlating_table()
+        self.show_forest_classifier()
 
         print("Calc ended")
 
