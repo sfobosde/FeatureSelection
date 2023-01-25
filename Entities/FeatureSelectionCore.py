@@ -190,6 +190,26 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         plt.xlim([-1, x_train.shape[1]])
         plt.show()
 
+        # разделяем поток данных на 70 % основных и 30 % тестовых
+        x_train, x_test, y_train, y_test = train_test_split(self.cleaned_dataset, self.dataset[self.key_column], test_size=0.3, random_state=42)
+        # нормализуем данные
+        x_train_N = (x_train - x_train.mean()) / (x_train.max() - x_train.min())
+        x_test_N = (x_test - x_test.mean()) / (x_test.max() - x_test.min())
+
+        from sklearn.decomposition import PCA
+        pca = PCA()
+        pca.fit(x_train_N)
+
+        plt.figure(1, figsize=(14, 13))
+        plt.clf()
+        plt.axes([.2, .2, .7, .7])
+        plt.plot(pca.explained_variance_ratio_, linewidth=2)
+        plt.axis('tight')
+        plt.xlabel('n_components')
+        plt.ylabel('explained_variance_ratio_')
+
+        plt.show()
+
     # Calculations start event.
     def start_calculations(self):
         self.exclude_columns()
