@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="seaborn installed">
+    <list default="true" id="725a3b73-cb55-4001-89df-b13fd177026b" name="Changes" comment="resolve correlation heatmap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/FeatureSelectionCore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/IFeatureSelectionCore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Presenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Presenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/IMainFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserForms/MainFrame/MainFrameDesigner.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +209,42 @@
       <option name="project" value="LOCAL" />
       <updated>1674476597291</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="add common button to start calculations and handling core errors with view output">
+      <created>1674584415521</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1674584415521</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Refactor">
+      <created>1674587285701</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1674587285701</updated>
+    </task>
+    <task id="LOCAL-00025" summary="resolved caclculate button">
+      <created>1674589684857</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1674589684857</updated>
+    </task>
+    <task id="LOCAL-00026" summary="resolve violin plot error">
+      <created>1674600089783</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1674600089783</updated>
+    </task>
+    <task id="LOCAL-00027" summary="resolve correlation heatmap">
+      <created>1674619058757</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1674619058757</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,8 +271,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create project, venv" />
-    <MESSAGE value="add tkinter" />
     <MESSAGE value="Create presenter, EntityManager, mainFrame" />
     <MESSAGE value="add form designer" />
     <MESSAGE value="add import button and handler" />
@@ -263,6 +291,11 @@
     <MESSAGE value="change layout style" />
     <MESSAGE value="add standardize function" />
     <MESSAGE value="seaborn installed" />
-    <option name="LAST_COMMIT_MESSAGE" value="seaborn installed" />
+    <MESSAGE value="add common button to start calculations and handling core errors with view output" />
+    <MESSAGE value="Refactor" />
+    <MESSAGE value="resolved caclculate button" />
+    <MESSAGE value="resolve violin plot error" />
+    <MESSAGE value="resolve correlation heatmap" />
+    <option name="LAST_COMMIT_MESSAGE" value="resolve correlation heatmap" />
   </component>
 </project>

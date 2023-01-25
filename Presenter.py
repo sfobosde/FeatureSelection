@@ -32,6 +32,9 @@ class Presenter:
         # Starting Calculations.
         self.mainFrame.calculate_statistics.add_handler(self.featureSelectionCore.start_calculations)
 
+        # On selecting key column.
+        self.mainFrame.key_column_selected.add_handler(self.featureSelectionCore.catch_key_column)
+
         try:
             self.mainFrame.show()
         except Exception as e:

@@ -22,6 +22,7 @@ class MainFrame(IMainFrame):
         self.get_bar_graph = UserEvent()
         self.standardize_dataset = UserEvent()
         self.calculate_statistics = UserEvent()
+        self.key_column_selected = UserEvent()
 
         self.__drop_list = []
 

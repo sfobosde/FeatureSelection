@@ -24,6 +24,8 @@ class IFeatureSelectionCore:
     # Raise exception.
     throw_exception: UserEvent
 
+    #
+
     # Handle event and catch dataset file.
     def receive_dataset_file(self, file):
         pass
@@ -33,7 +35,7 @@ class IFeatureSelectionCore:
         pass
 
     # Standardize dataset.
-    def standardize_dataset(self, key_column):
+    def standardize_dataset(self, columns_range: list):
         pass
 
     # Standardize handler.
@@ -42,4 +44,8 @@ class IFeatureSelectionCore:
 
     # Calculations start event.
     def start_calculations(self):
+        pass
+
+    # Get selected key column.
+    def catch_key_column(self, key_column):
         pass
