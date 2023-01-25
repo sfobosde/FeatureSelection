@@ -72,7 +72,8 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         self.standardized_dataset = pd.melt(data, id_vars=self.key_column,
                                             var_name="features",
                                             value_name='value')
-        self.show_violinplot()
+
+        # Call graph drawing.
 
     # Show violined plot.
     def show_violinplot(self):
@@ -86,10 +87,34 @@ class FeatureSelectionCore(IFeatureSelectionCore):
         plt.xticks(rotation=90)
         plt.show()
 
+    def show_swarmplot(self):
+        plt.figure(figsize=(10, 10))
+        sns.swarmplot(x="features", y="value", hue=self.key_column, data=self.standardized_dataset, size=1)
+
+        plt.xticks(rotation=90)
+        plt.show()
+
+    def show_correlating_table(self):
+        f, ax = plt.subplots(figsize=(18, 18))
+        sns.heatmap(self.cleaned_dataset.corr(), annot=True, linewidths=.5, fmt='.1f', ax=ax)
+        plt.show()
+
+    def show_correlation_grid(self, correlation_columns: list):
+        plt.figure(figsize=(10, 10))
+        sns.set(style="white")
+        g = sns.PairGrid(self.cleaned_dataset.loc[:, correlation_columns], diag_sharey=False)
+        g.map_lower(sns.kdeplot, cmap="Blues_d")
+        g.map_upper(plt.scatter)
+        g.map_diag(sns.kdeplot, lw=3)
+        plt.show()
+
     # Calculations start event.
     def start_calculations(self):
         self.exclude_columns()
         self.show_cleaned_dataset(self.cleaned_dataset)
         self.iterate_columns(10)
 
+        self.show_correlating_table()
+
+        print("Calc ended")
 
