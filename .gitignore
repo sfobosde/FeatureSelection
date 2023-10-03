@@ -1,1 +1,4 @@
-UserForms/MainFrame/__pycache__/MainFrameDesigner.cpython-310.pyc
+*.pyc
+*.cfg
+
+venv/
